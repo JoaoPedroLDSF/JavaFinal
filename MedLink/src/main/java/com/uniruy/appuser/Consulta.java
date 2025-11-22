@@ -9,34 +9,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Lob;
 
-@Entity // Diz ao Spring que esta classe é uma tabela no banco
+@Entity
 public class Consulta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Guarda a data E a hora da consulta
     private LocalDateTime dataHora; 
     
-    @Lob // Para textos longos (igual ao BLOB de foto)
-    private String observacoes; // Notas sobre a consulta
+    @Lob
+    private String observacoes;
     
-    // --- RELACIONAMENTOS ---
-
-    // @ManyToOne: "Muitas" consultas podem pertencer a "Um" paciente.
     @ManyToOne 
-    @JoinColumn(name = "paciente_id", nullable = false) // Chave estrangeira
+    @JoinColumn(name = "paciente_id", nullable = false) 
     private Paciente paciente;
 
-    // @ManyToOne: "Muitas" consultas podem pertencer a "Um" médico (Registro).
     @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false) // Chave estrangeira
+    @JoinColumn(name = "medico_id", nullable = false) 
     private Registro medico;
 
-    
-    // --- Getters e Setters ---
-    
     public Long getId() {
         return id;
     }
@@ -76,4 +68,5 @@ public class Consulta {
     public void setMedico(Registro medico) {
         this.medico = medico;
     }
+
 }
