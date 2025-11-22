@@ -34,7 +34,6 @@ public class Dataloader {
                     "Radioterapia", "Reumatologia", "Urologia"
                 );
 
-                // Para cada nome na lista, cria um novo objeto Especialidade e salva
                 especialidadesNomes.forEach(nome -> repository.save(new Especialidade(nome)));
                 
                 System.out.println("Especialidades populadas com sucesso!");
@@ -43,4 +42,5 @@ public class Dataloader {
             }
         };
     }
+
 }
